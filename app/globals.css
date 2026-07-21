@@ -1,26 +1,57 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #0c0e13;
+  --color-bg-soft: #10131a;
+  --color-surface: #151922;
+  --color-surface-raised: #1c212b;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-ink: #f1efe9;
+  --color-ink-soft: #9aa1ad;
+  --color-ink-faint: #5e6470;
+
+  --color-amber: #eaa23c;
+  --color-amber-soft: rgba(234, 162, 60, 0.16);
+  --color-cyan: #57d6c9;
+  --color-cyan-soft: rgba(87, 214, 201, 0.14);
+
+  --color-red: #e0685a;
+  --color-red-soft: rgba(224, 104, 90, 0.14);
+  --color-green: #63c088;
+
+  --font-display: var(--font-space-grotesk), "Arial Narrow", sans-serif;
+  --font-body: var(--font-manrope), -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "SFMono-Regular", Consolas, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --container-width: 1120px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 12% -10%, rgba(234, 162, 60, 0.08), transparent 60%),
+    radial-gradient(ellipse 900px 600px at 100% 10%, rgba(87, 214, 201, 0.07), transparent 60%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+a { color: inherit; }
+button { font-family: inherit; }
+
+::selection { background-color: var(--color-amber-soft); color: var(--color-ink); }
+:focus-visible { outline: 2px solid var(--color-cyan); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
