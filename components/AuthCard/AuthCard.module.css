@@ -1,0 +1,119 @@
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 40px 80px -32px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.scanTrack {
+  position: relative;
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background-image: linear-gradient(90deg, transparent, var(--color-amber), var(--color-cyan), transparent);
+  animation: sweep 2.6s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+
+.badgeHead {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.5rem 1.75rem 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-amber);
+  box-shadow: 0 0 10px 2px var(--color-amber-soft);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.body {
+  padding: 0.85rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.subtitle {
+  margin: -1.1rem 0 0;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+}
+
+.footer {
+  padding: 0 1.75rem 1.5rem;
+}
+
+.stub {
+  border-top: 1px dashed var(--color-border);
+  padding: 1rem 1.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: var(--color-bg-soft);
+}
+
+.barcode {
+  height: 20px;
+  width: 120px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-cyan) 0px,
+    var(--color-cyan) 2px,
+    transparent 2px,
+    transparent 5px
+  );
+  opacity: 0.75;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-faint);
+  white-space: nowrap;
+}
