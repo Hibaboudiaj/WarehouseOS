@@ -1,5 +1,8 @@
+import Button from "@/components/Button/Button";
 export default function Home() {
   return (
-    <h1>tst</h1>
+    <div>
+      <Button>Se Connecter</Button>
+    </div>
   );
 }
