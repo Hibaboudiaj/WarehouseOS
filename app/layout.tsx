@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Manrope, JetBrains_Mono } from "next/font/google";
+import Providers from "./providers";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -32,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr">
       <body className={`${spaceGrotesk.variable} ${manrope.variable} ${jetbrainsMono.variable}`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

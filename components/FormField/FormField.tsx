@@ -6,6 +6,8 @@ interface FormFieldProps {
   name: string;
   placeholder?: string;
   hint?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function FormField({
@@ -14,6 +16,8 @@ export default function FormField({
   name,
   placeholder,
   hint,
+  value,
+  onChange,
 }: FormFieldProps) {
   return (
     <div className={styles.field}>
@@ -25,6 +29,8 @@ export default function FormField({
         name={name}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className={styles.input}
       />
       {hint && <p className={styles.hint}>{hint}</p>}

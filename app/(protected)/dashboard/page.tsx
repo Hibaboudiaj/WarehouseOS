@@ -1,12 +1,20 @@
-import Button from "@/components/Button/Button";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+// import Button from "@/components/Button/Button";
 import ManifestRow from "@/components/ManifestRow/ManifestRow";
 import styles from "./page.module.css";
 
-export default function DashboardPage() {
-  const userName = "Camille Farhat";
-  const userEmail = "camille.farhat@warehouseos.com";
-  const userId = "usr_001";
-  const connectedAt = "21 juillet 2026 · 09:42";
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+
+  const userName = session?.user?.name ?? "";
+  const userEmail = session?.user?.email ?? "";
+  const userId = (session?.user as any)?.id ?? "";
+  const loginTime = (session?.user as any)?.loginTime;
+
+  const connectedAt = loginTime
+    ? new Date(loginTime).toLocaleString("fr-FR")
+    : "";
 
   return (
     <div className={styles.page}>
@@ -34,7 +42,6 @@ export default function DashboardPage() {
             <ManifestRow label="Identifiant" value={userId} />
             <ManifestRow label="Connecté depuis" value={connectedAt} />
           </div>
-          <Button variant="secondary">Déconnexion</Button>
         </section>
 
         <section className={styles.comingSoon}>

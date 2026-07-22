@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 import Button from "@/components/Button/Button";
 import styles from "./Header.module.css";
 
@@ -27,7 +30,9 @@ export default function Header({ userName, userEmail }: HeaderProps) {
             <span className={styles.userName}>{userName}</span>
             <span className={styles.userEmail}>{userEmail}</span>
           </div>
-          <Button variant="secondary">Déconnexion</Button>
+          <Button variant="secondary" onClick={() => signOut({ callbackUrl: "/login" })}>
+            Déconnexion
+          </Button>
         </div>
       </div>
     </header>
