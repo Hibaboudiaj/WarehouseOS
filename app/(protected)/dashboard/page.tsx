@@ -1,6 +1,5 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-// import Button from "@/components/Button/Button";
 import ManifestRow from "@/components/ManifestRow/ManifestRow";
 import styles from "./page.module.css";
 
@@ -9,12 +8,8 @@ export default async function DashboardPage() {
 
   const userName = session?.user?.name ?? "";
   const userEmail = session?.user?.email ?? "";
-  const userId = (session?.user as any)?.id ?? "";
-  const loginTime = (session?.user as any)?.loginTime;
-
-  const connectedAt = loginTime
-    ? new Date(loginTime).toLocaleString("fr-FR")
-    : "";
+  const userId = session?.user?.id ?? "";
+  const connectedAt = new Date().toLocaleDateString("fr-FR");
 
   return (
     <div className={styles.page}>
