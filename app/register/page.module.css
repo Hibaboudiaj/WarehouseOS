@@ -1,0 +1,17 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.switchLine {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+}
+
+.switchLink {
+  color: var(--color-cyan);
+  font-weight: 600;
+  text-decoration: underline;
+}
