@@ -1,0 +1,132 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.statusStrip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  align-self: flex-start;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-amber);
+}
+
+.statusText {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.statusTime {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-ink-faint);
+  border-left: 1px solid var(--color-border);
+  padding-left: 0.6rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 560px;
+  color: var(--color-ink-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.9rem;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.comingSoon {
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--color-bg-soft);
+}
+
+.comingSoonTag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+  background-color: var(--color-cyan-soft);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.comingSoonTitle {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.comingSoonText {
+  margin: 0;
+  color: var(--color-ink-faint);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
