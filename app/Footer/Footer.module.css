@@ -1,0 +1,22 @@
+.footer {
+  background-color: var(--color-bg-soft);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-ink-faint);
+}
+
+.brand {
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
