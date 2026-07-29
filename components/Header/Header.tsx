@@ -20,9 +20,13 @@ export default function Header({ userName, userEmail }: HeaderProps) {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/dashboard" className={styles.navLink}>
-            Dashboard
-          </Link>
+          <Link href="/dashboard">Dashboard</Link>
+
+          <Link href="/products">Produits</Link>
+
+          <Link href="/categories">Catégories</Link>
+
+          <Link href="/stock/movements">Stock</Link>
         </nav>
 
         <div className={styles.userArea}>
@@ -30,7 +34,10 @@ export default function Header({ userName, userEmail }: HeaderProps) {
             <span className={styles.userName}>{userName}</span>
             <span className={styles.userEmail}>{userEmail}</span>
           </div>
-          <Button variant="secondary" onClick={() => signOut({ callbackUrl: "/login" })}>
+          <Button
+            variant="secondary"
+            onClick={() => signOut({ callbackUrl: "/login" })}
+          >
             Déconnexion
           </Button>
         </div>
