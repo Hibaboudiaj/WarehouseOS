@@ -20,21 +20,13 @@ export default function Header({ userName, userEmail }: HeaderProps) {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/dashboard" className={styles.navLink}>
-            Dashboard
-          </Link>
+          <Link href="/dashboard">Dashboard</Link>
 
-          <Link href="/products" className={styles.navLink}>
-            Produits
-          </Link>
+          <Link href="/products">Produits</Link>
 
-          <Link href="/categories" className={styles.navLink}>
-            Catégories
-          </Link>
+          <Link href="/categories">Catégories</Link>
 
-          <Link href="/stock/movements" className={styles.navLink}>
-            Stock
-          </Link>
+          <Link href="/stock/movements">Stock</Link>
         </nav>
 
         <div className={styles.userArea}>

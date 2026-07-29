@@ -1,53 +1,111 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import ManifestRow from "@/components/ManifestRow/ManifestRow";
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions);
+interface Movement {
+  _id: string;
+  type: "IN" | "OUT";
+  quantity: number;
+  createdAt: string;
+  product: {
+    name: string;
+  };
+}
 
-  const userName = session?.user?.name ?? "";
-  const userEmail = session?.user?.email ?? "";
-  const userId = session?.user?.id ?? "";
-  const connectedAt = new Date().toLocaleDateString("fr-FR");
+interface DashboardData {
+  totalProducts: number;
+  totalCategories: number;
+  lowStock: number;
+  recentMovements: Movement[];
+}
+
+export default function DashboardPage() {
+  const [dashboard, setDashboard] = useState<DashboardData | null>(null);
+
+  useEffect(() => {
+    async function loadDashboard() {
+      const res = await fetch("/api/dashboard");
+      const data = await res.json();
+      setDashboard(data);
+    }
+
+    loadDashboard();
+  }, []);
+
+  if (!dashboard) {
+    return <p>Chargement...</p>;
+  }
 
   return (
     <div className={styles.page}>
-      <div className={styles.statusStrip}>
-        <span className={styles.statusDot} />
-        <span className={styles.statusText}>Session active</span>
-        <span className={styles.statusTime}>{connectedAt}</span>
+      <h1 className={styles.title}>Tableau de bord</h1>
+
+      <div className={styles.cards}>
+        <div className={styles.card}>
+          <h3>Produits</h3>
+          <span>{dashboard.totalProducts}</span>
+        </div>
+
+        <div className={styles.card}>
+          <h3>Catégories</h3>
+          <span>{dashboard.totalCategories}</span>
+        </div>
+
+        <div className={styles.card}>
+          <h3>Stock faible</h3>
+          <span>{dashboard.lowStock}</span>
+        </div>
+
+        <div className={styles.card}>
+          <h3>Mouvements</h3>
+          <span>{dashboard.recentMovements.length}</span>
+        </div>
       </div>
 
-      <div>
-        <p className={styles.eyebrow}>Tableau de bord</p>
-        <h1 className={styles.title}>Bienvenue, {userName.split(" ")[0]}</h1>
-        <p className={styles.subtitle}>
-          Voici votre espace WarehouseOS. Les modules produits et stock
-          arrivent dans les prochains sprints.
-        </p>
-      </div>
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2>Derniers mouvements</h2>
 
-      <div className={styles.grid}>
-        <section className={styles.card}>
-          <h2 className={styles.cardTitle}>Informations du compte</h2>
-          <div className={styles.rows}>
-            <ManifestRow label="Nom" value={userName} />
-            <ManifestRow label="Email" value={userEmail} />
-            <ManifestRow label="Identifiant" value={userId} />
-            <ManifestRow label="Connecté depuis" value={connectedAt} />
-          </div>
-        </section>
+          <Link href="/stock/movements">
+            Voir tout →
+          </Link>
+        </div>
 
-        <section className={styles.comingSoon}>
-          <span className={styles.comingSoonTag}>Prochain sprint</span>
-          <h2 className={styles.comingSoonTitle}>Produits &amp; Stock</h2>
-          <p className={styles.comingSoonText}>
-            La gestion des produits, des catégories et des mouvements
-            d&apos;inventaire sera ajoutée ici dans une prochaine itération.
-          </p>
-        </section>
-      </div>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Type</th>
+              <th>Quantité</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {dashboard.recentMovements.map((movement) => (
+              <tr key={movement._id}>
+                <td>{movement.product.name}</td>
+
+                <td>
+                  {movement.type === "IN"
+                    ? "Entrée"
+                    : "Sortie"}
+                </td>
+
+                <td>{movement.quantity}</td>
+
+                <td>
+                  {new Date(
+                    movement.createdAt
+                  ).toLocaleDateString("fr-FR")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 }

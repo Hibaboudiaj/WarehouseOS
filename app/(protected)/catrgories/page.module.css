@@ -1,0 +1,52 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.error {
+  color: crimson;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.edit {
+  background: none;
+  border: none;
+  color: royalblue;
+  cursor: pointer;
+}
+
+.archive {
+  background: none;
+  border: none;
+  color: crimson;
+  cursor: pointer;
+}
